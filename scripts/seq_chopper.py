@@ -40,7 +40,7 @@ def sum_partitions(line):
 
 
 def chop_seqs(fastafile, name, start_pos, end_pos):
-    filename = name + '_chopped.fasta'
+    filename = name + '.fasta'
     with screed.open(fastafile) as fh:
         with open(filename, 'w') as newfh:
             for seq in fh:
@@ -58,6 +58,7 @@ if __name__ == '__main__':
     partitionfile = opts['-p']
     fastafile = opts['-f']
     partitions = open(partitionfile)
+    print(fastafile, file=sys.stderr)
     for line in partitions:
         name, start_pos, end_pos = sum_partitions(line)
         chop_seqs(fastafile, name, start_pos, end_pos)
