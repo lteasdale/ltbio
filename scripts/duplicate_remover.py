@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from __future__ import print_function, division, absolute_import
 from os import path
 
@@ -11,29 +10,22 @@ __author__ = "lteasnail"
 
 CLI_ARGS = """
 USAGE:
-thing.py [options]
-
-OPTIONS:
- -l LEFT       left hand reads fastq file
- -r RIGHT      Right hand reads fastq file
+duplicate_remover.py R1_FILE R2_FILE
 
 """
 
 
 def pairer(filename1, filename2):
-    with screed.open(filename1) as reads:
-        with screed.open(filename2) as reads:
-            counts = 0
-            for read in seqfile:
-                counts += 1
-                reads = (counts, read, )
-                yield reads
+    with screed.open(filename1) as reads1, \
+         screed.open(filename2) as reads2:
+            for i, (readl, readr) in enumerate(zip(reads1, reads2)):
+                yield (i, readl, readr)
 
 
 # If I am being run as a script...
 if __name__ == '__main__':
     opts = docopt.docopt(CLI_ARGS)
-    left_fastq = opts['-l']
-    right_fastq = opts['-r']
-    counts = pairer(left_fastq, right_fastq)
-    print(*counts, file=sys.stderr)
+    left_fastq =  opts['R1_FILE']
+    right_fastq = opts['R2_FILE']
+    for i, r1, r2 in pairer(left_fastq, right_fastq):
+        print(i, r1.name, r2.name)
