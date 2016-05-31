@@ -16,13 +16,15 @@ USAGE:
 tree_renamer.py -f TREEFILE -n NAMES
 
 OPTIONS:
- -f TREEFILE    The multi-species alignment file in fasta format.
+ -f TREEFILE    The tree file in newick format.
  -n NAMES       Tab delimited file with names to find in the first column and
                 names to replace them with in the second.
 
-Tree_namer
+This script replaces the tip labels in a tree.
 
 """
+
+# This function processes the list of original and new names.
 
 
 def get_name_replacer(names_file):
@@ -32,6 +34,9 @@ def get_name_replacer(names_file):
             orig, new = line.strip().split("\t")
             replacer[orig] = new
     return replacer
+
+# This function replaces the original names with the new names and returns the
+# tree in nemick format.
 
 
 def replace_names(tree_file, replacer):

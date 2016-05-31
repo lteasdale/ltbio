@@ -1,3 +1,5 @@
+# Work in progress!
+
 # need to parse a fastq file
 #
 # need to read in parameters like window size, quality threshold

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# This script was originally writtern by Nathan Whelan as stated below however
+# the original script did not appear to work and here it has been edited by
+# Kevin Murray so that it runs.
+
 ###############################################################################
 # This script was written by Nathan Whelan.
 # THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS

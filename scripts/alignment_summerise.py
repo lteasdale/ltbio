@@ -12,7 +12,7 @@ from collections import Counter, OrderedDict
 import docopt
 import sys
 
-__author__ = "lteasnail"
+__author__ = "Luisa Teasdale"
 
 CLI_ARGS = """
 USAGE:
@@ -26,17 +26,19 @@ OPTIONS:
 Alignment summeriser
 
 This program goes through the specified fasta MSA's and provides some summary
-statistics.
+statistics, including the length of the sequence, the number of sites which
+contain nucleotides or amino acids, and the proportion of each sequence which
+is not gaps or ambiguous characters.
 
 You need to have python-screed and python-docopt installed.
 
-e.g. python ambig_counter.py -t PROT *.fasta > Summary_stats.txt
+e.g. python alignment_summerise.py -t PROT *.fasta > Summary_stats.txt
 
 """
 
-# This function counts the number of ambiguous bases per sequence per file,
-# then works out the proportion of ambiguous sites and put them all in a
-# dictionary
+# This function calculates the length of the sequence, and the number of
+# characters and the proportion of the alignment that is sequence that is
+# nucleotides or amino acids for each fasta file.
 
 
 def count_data(filename, data_char):
@@ -62,8 +64,8 @@ def count_data(filename, data_char):
     return ambigs
 
 
-# This function runs the count_ambig function for each file and outputs the
-# stats to a tab demlim file
+# This function uses count_data to calculate and print the statistics for all
+# the fasta files.
 
 
 def print_prop_data(files, data_char, table_file=sys.stdout):

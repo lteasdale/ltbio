@@ -10,7 +10,7 @@ import docopt
 import sys
 
 
-__author__ = "lteasnail"
+__author__ = "Luisa Teasdale"
 
 CLI_ARGS = """
 USAGE:
@@ -22,7 +22,10 @@ OPTIONS:
                 want chopped out and the name of the fasta file the subset will
                 be printed to.
 
-Seq_chopper
+This script takes a supermatrix alignment and a text file specifying
+partitions in RAxML format and will output a seperate fasta file for each
+partition. At the moment the script only works with one data block per
+partition.
 
 """
 
@@ -52,7 +55,7 @@ def chop_seqs(fastafile, name, start_pos, end_pos):
                 print(">{}\n{}".format(seq_name, subset), file=newfh)
 
 
-# If I am being run as a script...s
+# If I am being run as a script...
 if __name__ == '__main__':
     opts = docopt.docopt(CLI_ARGS)
     partitionfile = opts['-p']
