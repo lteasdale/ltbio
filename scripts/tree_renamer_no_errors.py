@@ -50,8 +50,6 @@ def replace_names(tree_file, replacer):
             print("ERROR: Tip is missing from replacement file: '{}'".format(
                   tip.name), file=sys.stderr)
             errored = True
-    if errored:
-        return ''
     return tree.write()
 
 
